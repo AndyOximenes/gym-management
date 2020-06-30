@@ -77,4 +77,18 @@ header {
 
   /* sombra */
   box-shadow: 0 0.125rem 0.375rem -0.125rem rgba(0, 0, 0, 0.4);
+
+  /* animation */
+
+  animation-name: up 200ms ease-in-out;
+}
+
+@keyframes up {
+  from {
+    opacity: 0;
+    transform: translate(0.9375rem);
+  }
+  to {
+    opacity: 1;
+  }
 }
