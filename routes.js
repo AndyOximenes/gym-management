@@ -9,6 +9,14 @@ routes.get("/instructors", (request, response) => {
   return response.render("instructors/index");
 });
 
+routes.get("/instructors/create", (request, response) => {
+  return response.render("instructors/create");
+});
+
+routes.post("/instructors", (request, response) => {
+  return response.send("Recebido");
+});
+
 routes.get("/members", (request, response) => {
   return response.send("members");
 });
