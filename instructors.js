@@ -1,4 +1,5 @@
 const fs = require("fs");
+const data = require("./data.json");
 
 // POST
 
@@ -11,7 +12,12 @@ exports.post = (request, response) => {
     }
   }
 
-  fs.writeFile("data.json", JSON.stringify(request.body), (err) => {
+  request.body.birth = Date.parse(request.body.birth);
+  request.body.created_at = Date.now();
+
+  data.instructors.push(request.body);
+
+  fs.writeFile("data.json", JSON.stringify(data, null, 2), (err) => {
     if (err) return response.send("Write file error!");
 
     return response.redirect("/instructors");
