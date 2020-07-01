@@ -14,7 +14,7 @@ routes.get("/instructors/create", (request, response) => {
 });
 
 routes.post("/instructors", (request, response) => {
-  return response.send("Recebido");
+  return response.send(request.body);
 });
 
 routes.get("/members", (request, response) => {
