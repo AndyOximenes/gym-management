@@ -5,6 +5,7 @@ const data = require("./data.json");
 
 exports.post = (request, response) => {
   const keys = Object.keys(request.body);
+  let { avatar_url, name, birth, gender, services } = request.body;
 
   for (key of keys) {
     if (request.body[key] == "") {
@@ -12,10 +13,19 @@ exports.post = (request, response) => {
     }
   }
 
-  request.body.birth = Date.parse(request.body.birth);
-  request.body.created_at = Date.now();
+  birth = Date.parse(birth);
+  const created_at = Date.now();
+  const id = Number(data.instructors.length + 1);
 
-  data.instructors.push(request.body);
+  data.instructors.push({
+    id,
+    avatar_url,
+    name,
+    birth,
+    gender,
+    services,
+    created_at,
+  });
 
   fs.writeFile("data.json", JSON.stringify(data, null, 2), (err) => {
     if (err) return response.send("Write file error!");
