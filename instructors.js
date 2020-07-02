@@ -1,6 +1,22 @@
 const fs = require("fs");
 const data = require("./data.json");
 
+// SHOW
+
+exports.show = (request, response) => {
+  const { id } = request.params;
+
+  const foundInstructors = data.instructors.find((instructor) => {
+    return instructor.id == id;
+  });
+
+  if (!foundInstructors) {
+    return response.send("Instructor not found");
+  }
+
+  return response.send(foundInstructors);
+};
+
 // POST
 
 exports.post = (request, response) => {
