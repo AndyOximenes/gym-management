@@ -1,20 +1,28 @@
 const fs = require("fs");
 const data = require("./data.json");
+const { age } = require("./utils");
 
 // SHOW
 
 exports.show = (request, response) => {
   const { id } = request.params;
 
-  const foundInstructors = data.instructors.find((instructor) => {
+  const foundInstructor = data.instructors.find((instructor) => {
     return instructor.id == id;
   });
 
-  if (!foundInstructors) {
+  if (!foundInstructor) {
     return response.send("Instructor not found");
   }
 
-  return response.send(foundInstructors);
+  const instructor = {
+    ...foundInstructor,
+    age: age(foundInstructor.birth),
+    services: foundInstructor.services.split(","),
+    created_at: "",
+  };
+
+  return response.render("instructors/show", { instructor });
 };
 
 // POST
