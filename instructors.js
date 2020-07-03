@@ -19,7 +19,9 @@ exports.show = (request, response) => {
     ...foundInstructor,
     age: age(foundInstructor.birth),
     services: foundInstructor.services.split(","),
-    created_at: "",
+    created_at: new Intl.DateTimeFormat("pt-br").format(
+      foundInstructor.created_at
+    ),
   };
 
   return response.render("instructors/show", { instructor });
