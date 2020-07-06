@@ -82,3 +82,36 @@ exports.edit = (request, response) => {
 
   return response.render("instructors/edit", { instructor });
 };
+
+// PUT
+
+exports.put = (request, response) => {
+  const { id } = request.body;
+
+  let index = 0;
+
+  const foundInstructor = data.instructors.find((instructor, foundIndex) => {
+    if (instructor == id) {
+      index = foundIndex;
+      return true;
+    }
+  });
+
+  if (!foundInstructor) {
+    return response.send("Instructor not found");
+  }
+
+  const instructor = {
+    ...foundInstructor,
+    ...request.body,
+    birth: Date.parse(request.body.birth),
+  };
+
+  data.instructors[index] = instructor;
+
+  fs.writeFile("data.json", JSON.stringify(data, null, 2), (err) => {
+    if (err) return response.send("Write file error!");
+
+    return response.redirect(`/instructors/${id}`);
+  });
+};
