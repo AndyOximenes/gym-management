@@ -91,7 +91,7 @@ exports.put = (request, response) => {
   let index = 0;
 
   const foundInstructor = data.instructors.find((instructor, foundIndex) => {
-    if (instructor == id) {
+    if (instructor.id == id) {
       index = foundIndex;
       return true;
     }

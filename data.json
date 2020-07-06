@@ -1,22 +1,13 @@
 {
   "instructors": [
     {
-      "id": 1,
+      "id": "1",
       "avatar_url": "http://google.com",
       "name": "Andy Oximenes da Silva",
       "birth": 802656000000,
       "gender": "M",
       "services": "Musculação, Crossfit",
-      "created_at": 1593802446941
-    },
-    {
-      "id": 2,
-      "avatar_url": "http://google.com",
-      "name": "Ana",
-      "birth": 1008374400000,
-      "gender": "F",
-      "services": "Musculação, Crossfit, Tênis",
-      "created_at": 1593802758737
+      "created_at": 1594056902172
     }
   ]
 }
