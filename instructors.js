@@ -115,3 +115,21 @@ exports.put = (request, response) => {
     return response.redirect(`/instructors/${id}`);
   });
 };
+
+// DELETE
+
+exports.delete = (request, response) => {
+  const { id } = request.body;
+
+  const filteredInstructor = data.instructors.filter((instructor) => {
+    return instructor.id != id;
+  });
+
+  data.instructors = filteredInstructor;
+
+  fs.writeFile("data.json", JSON.stringify(data, null, 2), (err) => {
+    if (err) return response.send("Write file error!");
+
+    return response.redirect("/instructors");
+  });
+};
