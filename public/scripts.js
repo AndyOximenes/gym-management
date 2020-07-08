@@ -6,3 +6,13 @@ for (item of menuItems) {
     item.classList.add("active");
   }
 }
+
+// MEMBER | INSTRUCTOR DELETE
+
+const formDelete = document.querySelector("#form-delete");
+formDelete.addEventListener("submit", (e) => {
+  const confirmation = confirm("Deseja realmente deletar?");
+  if (!confirmation) {
+    e.preventDefault();
+  }
+});

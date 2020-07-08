@@ -2,34 +2,36 @@
   "members": [
     {
       "id": 1,
-      "avatar_url": "https://avatars2.githubusercontent.com/u/52507064?s=460&u=04042d49a33cacd44c36bb760b7fc744d1d25a4e&v=4",
+      "avatar_url": "https://scontent.fcfb1-1.fna.fbcdn.net/v/t1.0-9/484099_259582734144842_787871274_n.jpg?_nc_cat=103&_nc_sid=de6eea&_nc_eui2=AeHQwj6PHGph0UcTy9X_O4Lwhb3JwUDmH92FvcnBQOYf3bqWugBxt2z8vazJBf_gmcj8eodn0KlhSjl7zTgsMWVm&_nc_oc=AQlwNNuTVvT-8l8-Aw3CqM2SQvmz8bpl1SdLZsiD1qJxlcVMRFo3s1QYp-ZYAbRgwjU&_nc_ht=scontent.fcfb1-1.fna&oh=ee5852c82b8c025614b31c827880bbcc&oe=5F2B4EF7",
       "name": "Andy Oximenes",
       "email": "andy.oximenes@gmail.com",
-      "birth": 809913600000,
+      "birth": 802656000000,
       "gender": "M",
       "blood": "O+",
       "weight": "79",
-      "height": "175"
+      "height": "180"
+    },
+    {
+      "id": 2,
+      "avatar_url": "https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "name": "Ana Carolina",
+      "email": "ana@ana.com",
+      "birth": 945216000000,
+      "gender": "F",
+      "blood": "A+",
+      "weight": "65",
+      "height": "167"
     }
   ],
   "instructors": [
     {
       "id": 1,
-      "avatar_url": "https://scontent.fcfb1-1.fna.fbcdn.net/v/t1.0-9/484099_259582734144842_787871274_n.jpg?_nc_cat=103&_nc_sid=de6eea&_nc_eui2=AeHQwj6PHGph0UcTy9X_O4Lwhb3JwUDmH92FvcnBQOYf3bqWugBxt2z8vazJBf_gmcj8eodn0KlhSjl7zTgsMWVm&_nc_oc=AQlwNNuTVvT-8l8-Aw3CqM2SQvmz8bpl1SdLZsiD1qJxlcVMRFo3s1QYp-ZYAbRgwjU&_nc_ht=scontent.fcfb1-1.fna&oh=ee5852c82b8c025614b31c827880bbcc&oe=5F2B4EF7",
+      "avatar_url": "https://scontent.fcfb1-1.fna.fbcdn.net/v/t1.0-9/561360_332431923526589_1167130715_n.jpg?_nc_cat=111&_nc_sid=cdbe9c&_nc_eui2=AeHB484bIWu8wl5gzbXDES-z_PsNJNQGEU78-w0k1AYRTutvdUC8ZB6y0qF6uDNVIo5TPuov3-meR08dxmMR8Njb&_nc_oc=AQmazyp7gOwakHXNshTv4FUxM2E3PKACLp6hqKaeHmA_LKKHxYt6uLylQ_jgIOjlvvA&_nc_ht=scontent.fcfb1-1.fna&oh=5802129244810e57a6af7139b9e0a2f7&oe=5F2AF72E",
       "name": "Andy Oximenes da Silva",
       "birth": 802656000000,
-      "services": "Musculação, Crossfit",
-      "created_at": 1594061870464,
-      "gender": "M"
-    },
-    {
-      "id": 3,
-      "avatar_url": "https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-      "name": "Ana Carolina",
-      "birth": 979948800000,
-      "gender": "F",
+      "gender": "M",
       "services": "Musculação, Crossfit, Tênis",
-      "created_at": 1594142841248
+      "created_at": 1594234432787
     }
   ]
 }
