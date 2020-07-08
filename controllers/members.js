@@ -29,7 +29,17 @@ exports.show = (request, response) => {
 
 exports.post = (request, response) => {
   const keys = Object.keys(request.body);
-  let { avatar_url, name, birth, gender, services } = request.body;
+
+  let {
+    avatar_url,
+    name,
+    email,
+    blood,
+    birth,
+    gender,
+    weight,
+    height,
+  } = request.body;
 
   for (key of keys) {
     if (request.body[key] == "") {
@@ -38,26 +48,31 @@ exports.post = (request, response) => {
   }
 
   birth = Date.parse(birth);
-  const created_at = Date.now();
-  const id = Number(data.members.length + 1);
+
+  let id = 1;
+  const lastMember = data.members[data.members.length - 1];
+
+  if (lastMember) {
+    id = lastMember.id + 1;
+  }
 
   data.members.push({
     id,
     avatar_url,
     name,
+    email,
     birth,
     gender,
-    services,
-    created_at,
+    blood,
+    weight,
+    height,
   });
 
   fs.writeFile("data.json", JSON.stringify(data, null, 2), (err) => {
     if (err) return response.send("Write file error!");
 
-    return response.redirect("/members");
+    return response.redirect(`/members/${id}`);
   });
-
-  //   return response.send(request.body);
 };
 
 exports.create = (request, response) => {
