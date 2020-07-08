@@ -7,7 +7,8 @@
       "name": "Andy Oximenes da Silva",
       "birth": 802656000000,
       "services": "Musculação, Crossfit",
-      "created_at": 1594061870464
+      "created_at": 1594061870464,
+      "gender": "M"
     },
     {
       "id": 3,
