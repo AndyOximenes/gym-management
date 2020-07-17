@@ -1,3 +1,4 @@
+const { age, date } = require("../../lib/utils");
 const Instructor = require("../models/Instructor");
 
 module.exports = {
@@ -10,7 +11,16 @@ module.exports = {
   },
 
   show(request, response) {
-    return;
+    Instructor.find(request.params.id, (instructor) => {
+      if (!instructor) return response.send("Instructor not found");
+
+      instructor.age = age(instructor.birth);
+      instructor.services = instructor.services.split(",");
+
+      instructor.created_at = date(instructor.created_at).format;
+
+      return response.render("instructors/show", { instructor });
+    });
   },
 
   post(request, response) {
