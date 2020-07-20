@@ -3,7 +3,7 @@ const db = require("../../app/config/db");
 
 module.exports = {
   all(callback) {
-    db.query(`SELECT * FROM instructors ORDER BY name ASC`, (err, results) => {
+    db.query(`SELECT * FROM members ORDER BY name ASC`, (err, results) => {
       if (err) throw `Database Error! ${err}`;
 
       callback(results.rows);
@@ -12,24 +12,28 @@ module.exports = {
 
   create(data, callback) {
     const query = `
-    INSERT INTO instructors (
+    INSERT INTO members (
       name,
       avatar_url,
+      email,
       gender,
-      services,
       birth,
-      created_at
-    ) VALUES ($1, $2, $3, $4, $5, $6)
+      blood,
+      weight,
+      height
+    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING id
   `;
 
     const values = [
       data.name,
       data.avatar_url,
+      data.email,
       data.gender,
-      data.services,
       date(data.birth).iso,
-      date(Date.now()).iso,
+      data.blood,
+      data.weight,
+      data.height,
     ];
 
     db.query(query, values, (err, results) => {
@@ -43,7 +47,7 @@ module.exports = {
     db.query(
       `
         SELECT * 
-        FROM instructors
+        FROM members
         WHERE id = $1`,
       [id],
       (err, results) => {
@@ -56,21 +60,27 @@ module.exports = {
 
   update(data, callback) {
     const query = `
-    UPDATE instructors SET
-      avatar_url=($1),
-      name=($2),
-      birth=($3),
-      gender=($4),
-      services=($5)
-    WHERE id = $6
+    UPDATE members SET
+        name=($1),
+        avatar_url=($2),
+        email=($3),
+        gender=($4),
+        birth=($5),
+        blood=($6),
+        weight=($7),
+        height=($8)
+    WHERE id = $9
     `;
 
     const values = [
-      data.avatar_url,
       data.name,
-      date(data.birth).iso,
+      data.avatar_url,
+      data.email,
       data.gender,
-      data.services,
+      date(data.birth).iso,
+      data.blood,
+      data.weight,
+      data.height,
       data.id,
     ];
 
@@ -83,7 +93,7 @@ module.exports = {
   delete(id, callback) {
     db.query(
       `
-      DELETE FROM instructors
+      DELETE FROM members
       WHERE id = $1
     `,
       [id],

@@ -1,12 +1,23 @@
 const { age, date } = require("../../lib/utils");
+const Member = require("../models/Member");
 
 module.exports = {
   index(request, response) {
-    return response.render("members/index");
+    Member.all((members) => {
+      return response.render("members/index", {
+        members,
+      });
+    });
   },
 
   show(request, response) {
-    return;
+    Member.find(request.params.id, (member) => {
+      if (!member) return response.send("Member not found");
+
+      member.birth = date(member.birth).birthDay;
+
+      return response.render("members/show", { member });
+    });
   },
 
   post(request, response) {
@@ -18,7 +29,9 @@ module.exports = {
       }
     }
 
-    return;
+    Member.create(request.body, (member) => {
+      return response.redirect(`/members/${member.id}`);
+    });
   },
 
   create(request, response) {
@@ -26,7 +39,13 @@ module.exports = {
   },
 
   edit(request, response) {
-    return;
+    Member.find(request.params.id, (member) => {
+      if (!member) return response.send("Member not found");
+
+      member.birth = date(member.birth).iso;
+
+      return response.render("members/edit", { member });
+    });
   },
 
   put(request, response) {
@@ -38,10 +57,14 @@ module.exports = {
       }
     }
 
-    return;
+    Member.update(request.body, () => {
+      return response.redirect(`/members/${request.body.id}`);
+    });
   },
 
   delete(request, response) {
-    return;
+    Member.delete(request.body.id, () => {
+      return response.redirect(`/members`);
+    });
   },
 };
