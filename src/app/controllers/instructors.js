@@ -42,7 +42,16 @@ module.exports = {
   },
 
   edit(request, response) {
-    return;
+    Instructor.find(request.params.id, (instructor) => {
+      if (!instructor) return response.send("Instructor not found");
+
+      instructor.birth = date(instructor.birth).iso;
+      instructor.services = instructor.services.split(",");
+
+      instructor.created_at = date(instructor.created_at).format;
+
+      return response.render("instructors/edit", { instructor });
+    });
   },
 
   put(request, response) {
@@ -54,7 +63,9 @@ module.exports = {
       }
     }
 
-    return;
+    Instructor.update(request.body, () => {
+      return response.redirect(`/instructors/${request.body.id}`);
+    });
   },
 
   delete(request, response) {
