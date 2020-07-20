@@ -69,6 +69,8 @@ module.exports = {
   },
 
   delete(request, response) {
-    return;
+    Instructor.delete(request.body.id, () => {
+      return response.redirect(`/instructors`);
+    });
   },
 };
