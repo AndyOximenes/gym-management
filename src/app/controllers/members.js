@@ -35,7 +35,9 @@ module.exports = {
   },
 
   create(request, response) {
-    return response.render("members/create");
+    Member.instructorsSelectOptions((options) => {
+      return response.render("members/create", { InstructorOptions: options });
+    });
   },
 
   edit(request, response) {
@@ -44,7 +46,12 @@ module.exports = {
 
       member.birth = date(member.birth).iso;
 
-      return response.render("members/edit", { member });
+      Member.instructorsSelectOptions((options) => {
+        return response.render("members/edit", {
+          member,
+          InstructorOptions: options,
+        });
+      });
     });
   },
 
